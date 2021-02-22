@@ -56,7 +56,7 @@ namespace MyStock.DAL
                 adapter.Fill(dt);
                 adapter.Dispose();
                 command.Dispose();
-                return int.Parse(dt.Rows[0][0].ToString()) > 0;
+                return dt.Rows.Count > 0;
             }
         }
         public static long GetMaxIndex(string query)
@@ -69,7 +69,7 @@ namespace MyStock.DAL
                 adapter.Fill(dt);
                 adapter.Dispose();
                 command.Dispose();
-                return long.Parse(dt.Rows[0][0].ToString());
+                return ((dt.Rows.Count == 0) || string.IsNullOrWhiteSpace(dt.Rows[0][0].ToString())) ? 1 : (1 + long.Parse(dt.Rows[0][0].ToString()));
             }
         }
 

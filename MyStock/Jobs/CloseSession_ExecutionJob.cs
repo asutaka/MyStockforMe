@@ -28,13 +28,12 @@ namespace MyStock.Jobs
             if (dayOfWeek == DayOfWeek.Sunday
                 || dayOfWeek == DayOfWeek.Saturday
                 || hour != 15
-                || minute != 2
                 )
                 return;
-            var isExists = SqlServer.CheckExists($"SELECT TOP 1 1 FROM ChotGiaDongCua WHERE NgayGiaoDich = '{DateTime.Now.Date}'");
+            var isExists = SqlServer.CheckExists($"SELECT TOP 1 1 FROM ChotGiaDongCua WHERE NgayGiaoDich = CONVERT(DATE, '{DateTime.Now.Date}', 103)");
             if (isExists)
                 return;
-            var dtInsert = SqlServer.GetData($"SELECT A1.ID,A0.TC,A0.GIA,A0.CAO,A0.THAP,A0.[TRAN],A0.SAN,A0.TONGKL FROM LIGHTNING A0 INNER JOIN COPHIEU A1 ON A1.MACHUNGKHOAN = A0.MACK WHERE A0.UPDATE_TIME = '{DateTime.Now.Date}'");
+            var dtInsert = SqlServer.GetData($"SELECT A1.ID,A0.TC,A0.GIA,A0.CAO,A0.THAP,A0.[TRAN],A0.SAN,A0.TONGKL FROM LIGHTNING A0 INNER JOIN COPHIEU A1 ON A1.MACHUNGKHOAN = A0.MACK WHERE CONVERT(DATE, A0.UPDATE_TIME, 103) = CONVERT(DATE, '{DateTime.Now.Date}', 103)");
             foreach (DataRow item in dtInsert.Rows)
             {
                 var Id = SqlServer.GetMaxIndex("SELECT MAX(ID) FROM ChotGiaDongCua");
@@ -63,7 +62,7 @@ namespace MyStock.Jobs
                                 + "     VALUES                              "
                                 + $"           ('{model.Id}'                "
                                 + $"           ,'{model.IdCoPhieu}'         "
-                                + $"           ,'{model.NgayGiaoDich}'        "
+                                + $"           ,CONVERT(DATE, '{model.NgayGiaoDich}', 103) "
                                 + $"           ,'{model.GiaThamChieu}'       "
                                 + $"           ,'{model.GiaMoCua}'           "
                                 + $"           ,'{model.GiaDongCua}'         "
@@ -82,7 +81,7 @@ namespace MyStock.Jobs
         /// <returns>Returns false because this job is not repeatable.</returns>
         public override bool IsRepeatable()
         {
-            return false;
+            return true;
         }
 
         /// <summary>
