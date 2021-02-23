@@ -84,6 +84,15 @@
     <Reference Include="PuppeteerSharp, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\PuppeteerSharp.2.0.4\lib\netstandard2.0\PuppeteerSharp.dll</HintPath>
     </Reference>
+    <Reference Include="Spire.License, Version=1.3.8.40, Culture=neutral, PublicKeyToken=b1144360237c8b3f, processorArchitecture=MSIL">
+      <HintPath>..\packages\Spire.XLS.11.2.3\lib\net40\Spire.License.dll</HintPath>
+    </Reference>
+    <Reference Include="Spire.Pdf, Version=7.2.5.0, Culture=neutral, PublicKeyToken=663f351905198cb3, processorArchitecture=MSIL">
+      <HintPath>..\packages\Spire.XLS.11.2.3\lib\net40\Spire.Pdf.dll</HintPath>
+    </Reference>
+    <Reference Include="Spire.XLS, Version=11.2.3.0, Culture=neutral, PublicKeyToken=663f351905198cb3, processorArchitecture=MSIL">
+      <HintPath>..\packages\Spire.XLS.11.2.3\lib\net40\Spire.XLS.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Buffers, Version=4.0.2.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Buffers.4.4.0\lib\netstandard2.0\System.Buffers.dll</HintPath>
@@ -157,6 +166,7 @@
     <Compile Include="BLL\Job.cs" />
     <Compile Include="BLL\JobManager.cs" />
     <Compile Include="Common\enumSanGD.cs" />
+    <Compile Include="Common\StaticValue.cs" />
     <Compile Include="DAL\Sqlite.cs" />
     <Compile Include="DAL\SqlServer.cs" />
     <Compile Include="frmLogin.cs">
@@ -165,6 +175,7 @@
     <Compile Include="frmLogin.Designer.cs">
       <DependentUpon>frmLogin.cs</DependentUpon>
     </Compile>
+    <Compile Include="InitProgram.cs" />
     <Compile Include="Jobs\CloseSession_ExecutionJob.cs" />
     <Compile Include="Jobs\HNX_ExecutionJob.cs" />
     <Compile Include="Jobs\HOSE_ExecutionJob.cs" />

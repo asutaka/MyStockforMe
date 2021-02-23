@@ -1,5 +1,4 @@
-﻿using MyStock.BLL;
-using System;
+﻿using System;
 using System.Windows.Forms;
 
 namespace MyStock
@@ -12,9 +11,7 @@ namespace MyStock
         [STAThread]
         static void Main()
         {
-            //Jobs
-            new JobManager().ExecuteAllJobs();
-
+            new InitProgram();
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new frmLogin());

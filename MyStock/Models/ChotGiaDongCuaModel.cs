@@ -15,5 +15,11 @@ namespace MyStock.Models
         public float GiaTran { get; set; }
         public float GiaSan { get; set; }
         public long KhoiLuongGiaoDich { get; set; }
+        public float GiaMoCuaFix { get; set; }
+        public float GiaDongCuaFix { get; set; }
+        public float GiaCaoNhatFix { get; set; }
+        public float GiaThapNhatFix { get; set; }
+        public long Mua_DTNN { get; set; }
+        public long Ban_DTNN { get; set; }
     }
 }

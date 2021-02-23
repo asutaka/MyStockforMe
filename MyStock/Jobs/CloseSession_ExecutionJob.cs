@@ -1,12 +1,11 @@
-﻿using HtmlAgilityPack;
-using MyStock.BLL;
+﻿using MyStock.BLL;
 using MyStock.Common;
 using MyStock.DAL;
 using MyStock.Models;
-using PuppeteerSharp;
 using System;
 using System.Data;
 using System.Threading.Tasks;
+using System.Linq;
 
 namespace MyStock.Jobs
 {
@@ -33,21 +32,24 @@ namespace MyStock.Jobs
             var isExists = SqlServer.CheckExists($"SELECT TOP 1 1 FROM ChotGiaDongCua WHERE NgayGiaoDich = CONVERT(DATE, '{DateTime.Now.Date}', 103)");
             if (isExists)
                 return;
-            var dtInsert = SqlServer.GetData($"SELECT A1.ID,A0.TC,A0.GIA,A0.CAO,A0.THAP,A0.[TRAN],A0.SAN,A0.TONGKL FROM LIGHTNING A0 INNER JOIN COPHIEU A1 ON A1.MACHUNGKHOAN = A0.MACK WHERE CONVERT(DATE, A0.UPDATE_TIME, 103) = CONVERT(DATE, '{DateTime.Now.Date}', 103)");
+            var dtInsert = SqlServer.GetData($"SELECT MACK, TC, GIA, CAO, THAP, [TRAN], SAN, TONGKL, MUA_DTNN, BAN_DTNN FROM LIGHTNING WHERE CONVERT(DATE, UPDATE_TIME, 103) = CONVERT(DATE, '{DateTime.Now.Date}', 103)");
             foreach (DataRow item in dtInsert.Rows)
             {
                 var Id = SqlServer.GetMaxIndex("SELECT MAX(ID) FROM ChotGiaDongCua");
+                var MaCK = item["MACK"].ToString();
                 var model = new ChotGiaDongCuaModel { Id = Id, NgayGiaoDich = DateTime.Now.Date };
-                model.IdCoPhieu = long.Parse(item["ID"].ToString());
+                model.IdCoPhieu = StaticValue.dicCoPhieu.First(x => x.Value == MaCK).Key;
                 model.GiaThamChieu = float.Parse(item["TC"].ToString());
-                model.GiaMoCua = 0;
-                model.GiaDongCua = float.Parse(item["GIA"].ToString());
-                model.GiaCaoNhat = float.Parse(item["CAO"].ToString());
-                model.GiaThapNhat = float.Parse(item["THAP"].ToString());
+                model.GiaMoCua = model.GiaMoCuaFix = 0;
+                model.GiaDongCua = model.GiaDongCuaFix = float.Parse(item["GIA"].ToString());
+                model.GiaCaoNhat = model.GiaCaoNhatFix = float.Parse(item["CAO"].ToString());
+                model.GiaThapNhat = model.GiaThapNhatFix = float.Parse(item["THAP"].ToString());
                 model.GiaTran = float.Parse(item["TRAN"].ToString());
                 model.GiaSan = float.Parse(item["SAN"].ToString());
                 model.KhoiLuongGiaoDich = long.Parse(item["TONGKL"].ToString());
-                var query = "INSERT INTO [dbo].[ChotGiaDongCua]		"
+                model.Mua_DTNN = long.Parse(item["MUA_DTNN"].ToString());
+                model.Ban_DTNN = long.Parse(item["BAN_DTNN"].ToString());
+                var query = "INSERT INTO [dbo].[ChotGiaDongCua]		        "
                                 + "           ([Id]                         "
                                 + "           ,[IdCoPhieu]                  "
                                 + "           ,[NgayGiaoDich]               "
@@ -58,7 +60,14 @@ namespace MyStock.Jobs
                                 + "           ,[GiaThapNhat]                "
                                 + "           ,[GiaTran]                    "
                                 + "           ,[GiaSan]                     "
-                                + "           ,[KhoiLuongGiaoDich])         "
+                                + "           ,[KhoiLuongGiaoDich]          "
+                                + "           ,[GiaMoCuaFix]                "
+                                + "           ,[GiaDongCuaFix]              "
+                                + "           ,[GiaCaoNhatFix]              "
+                                + "           ,[GiaThapNhatFix]             "
+                                + "           ,[Mua_DTNN]                   "
+                                + "           ,[Ban_DTNN]                   "
+                                + "           ,[Ngay_Tao])                  "
                                 + "     VALUES                              "
                                 + $"           ('{model.Id}'                "
                                 + $"           ,'{model.IdCoPhieu}'         "
@@ -70,7 +79,14 @@ namespace MyStock.Jobs
                                 + $"           ,'{model.GiaThapNhat}'        "
                                 + $"           ,'{model.GiaTran}'            "
                                 + $"           ,'{model.GiaSan}'             "
-                                + $"           ,'{model.KhoiLuongGiaoDich}')";
+                                + $"           ,'{model.KhoiLuongGiaoDich}'  "
+                                + $"           ,'{model.GiaMoCuaFix}'        "
+                                + $"           ,'{model.GiaDongCuaFix}'      "
+                                + $"           ,'{model.GiaCaoNhatFix}'      "
+                                + $"           ,'{model.GiaThapNhatFix}'     "
+                                + $"           ,'{model.Mua_DTNN}'           "
+                                + $"           ,'{model.Ban_DTNN}'           "
+                                + $"           ,CONVERT(DATETIME, '{DateTime.Now}', 103),";
                 SqlServer.Execute(query);
             }
         }

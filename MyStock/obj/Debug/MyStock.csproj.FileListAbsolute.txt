@@ -402,3 +402,10 @@ D:\Here\MyStock\obj\Debug\MyStock.csproj.CoreCompileInputs.cache
 D:\Here\MyStock\obj\Debug\MyStock.csproj.CopyComplete
 D:\Here\MyStock\obj\Debug\MyStock.exe
 D:\Here\MyStock\obj\Debug\MyStock.pdb
+D:\Here\MyStock\bin\Debug\Spire.License.dll
+D:\Here\MyStock\bin\Debug\Spire.Pdf.dll
+D:\Here\MyStock\bin\Debug\Spire.XLS.dll
+D:\Here\MyStock\bin\Debug\Microsoft.mshtml.dll
+D:\Here\MyStock\bin\Debug\Spire.License.xml
+D:\Here\MyStock\bin\Debug\Spire.Pdf.xml
+D:\Here\MyStock\bin\Debug\Spire.XLS.xml
