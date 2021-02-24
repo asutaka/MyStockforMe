@@ -271,6 +271,10 @@ namespace MyStock.DAL
             }
             MessageBox.Show("Import Success!");
         }
+        
+        
+        
+        
         public static void ImportExcelFile(string path)
         {
             Workbook workbook = new Workbook();
@@ -302,10 +306,6 @@ namespace MyStock.DAL
         {
            
         }
-
-
-
-
         public static string GetPath(this string fileName)
         {
             return $"{Directory.GetCurrentDirectory()}//Images//{fileName}";

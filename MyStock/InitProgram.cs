@@ -1,4 +1,5 @@
-﻿using MyStock.Common;
+﻿using MyStock.BLL;
+using MyStock.Common;
 using MyStock.DAL;
 using System;
 using System.Collections.Generic;
@@ -16,7 +17,7 @@ namespace MyStock
             InitStaticValue();
             //SqlServer.ImportCsvFolder("C:\\");
             //Jobs
-            //new JobManager().ExecuteAllJobs();
+            new JobManager().ExecuteAllJobs();
         }
         private void InitStaticValue()
         {

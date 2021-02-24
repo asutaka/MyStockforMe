@@ -86,7 +86,7 @@ namespace MyStock.Jobs
                                 + $"           ,'{model.GiaThapNhatFix}'     "
                                 + $"           ,'{model.Mua_DTNN}'           "
                                 + $"           ,'{model.Ban_DTNN}'           "
-                                + $"           ,CONVERT(DATETIME, '{DateTime.Now}', 103),";
+                                + $"           ,CONVERT(DATETIME, '{DateTime.Now}', 103))";
                 SqlServer.Execute(query);
             }
         }
