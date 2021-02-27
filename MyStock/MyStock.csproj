@@ -36,15 +36,13 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="DevExpress.Data.Desktop.v20.2, Version=20.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.Data.v20.2, Version=20.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.Printing.v20.2.Core, Version=20.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.Utils.v20.2, Version=20.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.XtraBars.v20.2, Version=20.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.XtraEditors.v20.2, Version=20.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.XtraGrid.v20.2, Version=20.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.XtraLayout.v20.2, Version=20.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
-    <Reference Include="DevExpress.XtraPrinting.v20.2, Version=20.2.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Data.Desktop.v20.1, Version=20.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Data.v20.1, Version=20.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Printing.v20.1.Core, Version=20.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Sparkline.v20.1.Core, Version=20.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Utils.v20.1, Version=20.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraBars.v20.1, Version=20.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraEditors.v20.1, Version=20.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.3.0\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
@@ -91,6 +89,7 @@
     <Reference Include="System.ComponentModel.Composition" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Data.Linq" />
     <Reference Include="System.Data.SQLite, Version=1.0.113.0, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=MSIL">
       <HintPath>..\packages\Stub.System.Data.SQLite.Core.NetFramework.1.0.113.3\lib\net46\System.Data.SQLite.dll</HintPath>
     </Reference>
@@ -165,6 +164,12 @@
     <Compile Include="frmLogin.Designer.cs">
       <DependentUpon>frmLogin.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmMain.Designer.cs">
+      <DependentUpon>frmMain.cs</DependentUpon>
+    </Compile>
     <Compile Include="Jobs\CloseSession_ExecutionJob.cs" />
     <Compile Include="Jobs\HNX_ExecutionJob.cs" />
     <Compile Include="Jobs\HOSE_ExecutionJob.cs" />
@@ -181,112 +186,13 @@
     <Compile Include="Models\PhieuChiModel.cs" />
     <Compile Include="Models\PhieuThuModel.cs" />
     <Compile Include="Models\SanGiaoDichModel.cs" />
-    <Compile Include="MyControl\userAccount.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="MyControl\userAccount.Designer.cs">
-      <DependentUpon>userAccount.cs</DependentUpon>
-    </Compile>
-    <Compile Include="MyControl\userBuyStock.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="MyControl\userBuyStock.Designer.cs">
-      <DependentUpon>userBuyStock.cs</DependentUpon>
-    </Compile>
-    <Compile Include="MyControl\userDashBoard.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="MyControl\userDashBoard.Designer.cs">
-      <DependentUpon>userDashBoard.cs</DependentUpon>
-    </Compile>
-    <Compile Include="MyControl\userEmail.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="MyControl\userEmail.Designer.cs">
-      <DependentUpon>userEmail.cs</DependentUpon>
-    </Compile>
-    <Compile Include="MyControl\userFinance.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="MyControl\userFinance.Designer.cs">
-      <DependentUpon>userFinance.cs</DependentUpon>
-    </Compile>
-    <Compile Include="MyControl\userImport.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="MyControl\userImport.Designer.cs">
-      <DependentUpon>userImport.cs</DependentUpon>
-    </Compile>
-    <Compile Include="MyControl\userLightningTable.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="MyControl\userLightningTable.Designer.cs">
-      <DependentUpon>userLightningTable.cs</DependentUpon>
-    </Compile>
-    <Compile Include="MyControl\userNotify.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="MyControl\userNotify.Designer.cs">
-      <DependentUpon>userNotify.cs</DependentUpon>
-    </Compile>
-    <Compile Include="MyControl\userSellStock.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="MyControl\userSellStock.Designer.cs">
-      <DependentUpon>userSellStock.cs</DependentUpon>
-    </Compile>
-    <Compile Include="MyControl\userStock.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="MyControl\userStock.Designer.cs">
-      <DependentUpon>userStock.cs</DependentUpon>
-    </Compile>
-    <Compile Include="MyControl\userStockAvailable.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="MyControl\userStockAvailable.Designer.cs">
-      <DependentUpon>userStockAvailable.cs</DependentUpon>
-    </Compile>
-    <Compile Include="MyControl\userTracking.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="MyControl\userTracking.Designer.cs">
-      <DependentUpon>userTracking.cs</DependentUpon>
-    </Compile>
-    <Compile Include="MyControl\userTradingHistory.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="MyControl\userTradingHistory.Designer.cs">
-      <DependentUpon>userTradingHistory.cs</DependentUpon>
-    </Compile>
-    <Compile Include="MyControl\userTradingMarket.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="MyControl\userTradingMarket.Designer.cs">
-      <DependentUpon>userTradingMarket.cs</DependentUpon>
-    </Compile>
-    <Compile Include="MyControl\userViewStock.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="MyControl\userViewStock.Designer.cs">
-      <DependentUpon>userViewStock.cs</DependentUpon>
-    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="frmMain.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="frmMain.Designer.cs">
-      <DependentUpon>frmMain.cs</DependentUpon>
-    </Compile>
     <EmbeddedResource Include="frmLogin.resx">
       <DependentUpon>frmLogin.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmMain.resx">
       <DependentUpon>frmMain.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="MyControl\userLightningTable.resx">
-      <DependentUpon>userLightningTable.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -297,6 +203,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -312,7 +219,93 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="Resources\search_64x64.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\setting_64x64.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\config_64x64.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\send_64x64.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\buy_64x64.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\sell_64x64.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\finance_64x64.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\tracking_64x64.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\chart_128x128.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\finance_128x128.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\dollar_128x128.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\internet_64x64.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\find_file_64x64.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\top_64x64.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\hose.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\hnx.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\upcom.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\dashboard_64x64.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\idea.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\gmail.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\account.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\feedback.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\note.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\IE.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\notify.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\file.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\folder.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\file_24x24.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\folder_24x24.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
